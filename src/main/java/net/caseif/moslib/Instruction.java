@@ -29,7 +29,6 @@ import static net.caseif.moslib.AddressingMode.*;
 import static net.caseif.moslib.Mnemonic.*;
 import static net.caseif.moslib.util.CollectionHelper.newUnmodifiableList;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;

@@ -31,6 +31,7 @@ import java.util.List;
 
 public class CollectionHelper {
 
+    @SafeVarargs
     public static <T> List<T> newUnmodifiableList(T... elements) {
         List<T> temp = new ArrayList<>();
         Collections.addAll(temp, elements);
