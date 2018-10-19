@@ -59,17 +59,6 @@ jar.manifest.mainAttributes(
         'Implementation-Version': version
 )
 
-jar {
-    classifier = 'base'
-    manifest {
-        attributes(
-                'Implementation-Title': project.name,
-                'Implementation-Version': version,
-                'Main-Class': 'net.caseif.mossy.Main'
-        )
-    }
-}
-
 task sourceJar(type: Jar) {
     from sourceSets.main.java
     from sourceSets.main.resources
