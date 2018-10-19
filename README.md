@@ -1,4 +1,4 @@
-# moslib ![](https://ci.caseif.net/job/moslib/job/master/badge/icon)
+# moslib [![](https://ci.caseif.net/job/moslib/job/master/badge/icon)](https://ci.caseif.net/job/moslib/)
 
 Tiny Java library for modeling 6502 instructions.
 
