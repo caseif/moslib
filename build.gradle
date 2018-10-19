@@ -13,12 +13,22 @@ group = 'net.caseif.moslib'
 version = '1.0.0-SNAPSHOT'
 
 // Extended project information
-ext.projectName = 'moslib'
-ext.inceptionYear = '2018'
-ext.packaging = 'jar'
+ext {
+    projectName = 'moslib'
+    description = 'Tiny Java library for modeling 6502 instructions.'
+    author = 'Max Roncace'
+    inceptionYear = '2018'
+    packaging = 'jar'
+
+    url = 'https://github.com/caseif/moslib'
+}
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
+
+configurations {
+    deployerJars
+}
 
 // Read source files using UTF-8
 tasks.withType(JavaCompile) {
@@ -38,6 +48,10 @@ license {
 
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    deployerJars 'org.apache.maven.wagon:wagon-ssh:2.9'
 }
 
 jar.manifest.mainAttributes(
@@ -69,4 +83,44 @@ artifacts {
 
 wrapper {
     gradleVersion = '4.10.2'
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        setUniqueVersion(true)
+        configuration = configurations.deployerJars
+
+        if (project.hasProperty('mavenRepo')) {
+            repository(url: project.property('mavenRepo')) {
+                if (project.hasProperty('mavenPrivKey')) {
+                    authentication(userName: project.property('mavenUser'), privateKey: project.property('mavenPrivKey'))
+                } else {
+                    authentication(userName: project.property('mavenUser'), password: project.property('mavenPass'))
+                }
+            }
+        }
+
+        pom {
+            groupId = project.group
+            version = project.version
+            artifactId = project.ext.projectName
+            project {
+                packaging 'jar'
+                description project.ext.description
+                url project.ext.url
+
+                scm {
+                    url project.ext.url
+                }
+
+                licenses {
+                    license {
+                        name 'MIT'
+                        url 'https://opensource.org/licenses/MIT'
+                        distribution 'repo'
+                    }
+                }
+            }
+        }
+    }
 }

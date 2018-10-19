@@ -13,6 +13,10 @@ node {
         gradlew("-PBUILD_NUMBER=${env.BUILD_NUMBER}")
     }
 
+    stage('Deploy') {
+	gradlew("uploadArchives")
+    }
+
     stage('Archive') {
         artifactPath = 'build/libs/*.jar'
         step([$class: 'ArtifactArchiver', artifacts: artifactPath, excludes: 'build/libs/*-base.jar',
