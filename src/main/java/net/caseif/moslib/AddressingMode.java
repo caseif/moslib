@@ -30,51 +30,51 @@ public enum AddressingMode {
     /**
      * Immediate.
      */
-    IMM(2),
+    IMM(1),
     /**
      * Zero-page.
      */
-    ZRP(2),
+    ZRP(1),
     /**
      * Zero-page X.
      */
-    ZPX(2),
+    ZPX(1),
     /**
      * Zero-page Y.
      */
-    ZPY(2),
+    ZPY(1),
     /**
      * Absolute.
      */
-    ABS(3),
+    ABS(2),
     /**
      * Absolute X.
      */
-    ABX(3),
+    ABX(2),
     /**
      * Absolute Y.
      */
-    ABY(3),
+    ABY(2),
     /**
      * Indirect.
      */
-    IND(3),
+    IND(2),
     /**
      * Indirect X.
      */
-    IZX(2),
+    IZX(1),
     /**
      * Indirect Y.
      */
-    IZY(2),
+    IZY(1),
     /**
      * Relative.
      */
-    REL(2),
+    REL(1),
     /**
      * Implied.
      */
-    IMP(1);
+    IMP(0);
 
     private final int length;
 
@@ -82,7 +82,7 @@ public enum AddressingMode {
         this.length = length;
     }
 
-    public int getLength() {
+    public int getOperandLength() {
         return length;
     }
 

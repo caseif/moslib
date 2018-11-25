@@ -118,7 +118,7 @@ public class Instruction {
     }
 
     public int getLength() {
-        return addrMode.getLength();
+        return addrMode.getOperandLength() + 1;
     }
 
     public static Instruction fromOpcode(byte opcode) {
